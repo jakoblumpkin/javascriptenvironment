@@ -1,11 +1,13 @@
 {
   "name": "javascript-development-environment",
   "version": "1.0.0",
-  "description": "JavaScript development environment Pluralsight course by Cory House",
-  "scripts": {
-    "start": "node buildScripts/srcServer.js",
+   "description": "JavaScript development environment Pluralsight course by Cory House",  "scripts": {
+    "prestart": "babel-node buildScripts/startMessage.js",
+    "start": "babel-node buildScripts/srcServer.js open:src lint-watch",
     "localtunnel": "lt --port 3000",
-    "share": "npm-run-all --parallel start localtunnel"
+    "share": "npm-run-all --parallel start localtunnel",
+    "lint": "esw webpack.config.* src buildScripts --color",
+    "lint:watch": "npm run lint -- --watch"
   },
   "author": "Cory House",
   "license": "MIT",
@@ -13,11 +15,15 @@
     "whatwg-fetch": "1.0.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.14.6",
+    "@babel/node": "^7.14.7",
+    "@babel/preset-env": "^7.14.7",
     "@types/chalk": "^2.2.0",
     "@types/open": "^6.2.1",
     "babel-cli": "6.16.0",
     "babel-core": "6.17.0",
     "babel-loader": "6.2.5",
+    "babel-preset-env": "^1.7.0",
     "babel-preset-latest": "6.16.0",
     "babel-register": "6.16.3",
     "chai": "3.5.0",

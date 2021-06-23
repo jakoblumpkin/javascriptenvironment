@@ -19,3 +19,29 @@ npm-run-all --parallel security-check open:src lint:watch test:watch start-mocka
     "build": "babel-node buildScripts/build.js",
     "postbuild": "babel-node buildScripts/distServer.js",
     "deploy": "surge ./dist"
+
+
+{
+    "presets": [
+        "@babel/preset-env"
+    ]
+}
+
+
+{
+  "presets": ["@babel/preset-env"],
+  "env": {
+    "production": {
+      "presets": [
+        [
+          "@babel/preset-env",
+          {
+            "targets": "> 0.25%, not dead"
+          }
+        ]
+      ]
+    }
+  }
+}
+
+git config --global core.autocrlf false
